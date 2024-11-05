@@ -93,7 +93,7 @@ def panel(request):
 def get_logs(request):
     """Lee el archivo logs_scraping.txt y devuelve su contenido como JSON."""
     try:
-        log_file_path = "logs_scraping.txt"
+        log_file_path = "example/logs_scraping.txt"
         with open(log_file_path, "r") as log_file:
             logs = log_file.readlines()
         return JsonResponse({'logs': logs})
@@ -106,7 +106,7 @@ def enviar_logs_a_api():
     url = "https://671d555c09103098807cd937.mockapi.io/api/odorwatch/logs_scraping"
     
     # Leer el contenido completo del archivo de logs
-    with open('logs_scraping.txt', 'r') as file:
+    with open('example/logs_scraping.txt', 'r') as file:
         logs = file.read()
     
     # Crear el payload con el contenido de logs
