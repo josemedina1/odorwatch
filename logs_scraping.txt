@@ -48929,3 +48929,4 @@ Stacktrace:
 	BaseThreadInitThunk [0x00007FF9C2447374+20]
 	RtlUserThreadStart [0x00007FF9C407CC91+33]
 
+2024-11-05 00:58:07 - Terminando scraping.
