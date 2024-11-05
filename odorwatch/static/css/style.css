@@ -1,0 +1,125 @@
+/* Estilos para el div con el fondo de imagen */
+.image-background-container {
+    width: 100%;
+    height: 100vh; /* Ocupa el 100% de la altura de la ventana */
+    background-image: url('../img/fondo-login-3.png'); /* Aquí debes colocar la ruta de tu imagen */
+    background-size: cover; /* Asegura que la imagen cubra todo el área */
+    background-position: center; /* Centra la imagen */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*Fondo animado*/
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('../img/nature-3507.gif'); /* Aquí va la ruta de tu imagen */
+    background-size: cover; /* Asegura que la imagen cubra todo el body */
+    background-position: center; /* Centra la imagen en el body */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    height: 100vh; /* Hace que el body ocupe el 100% de la altura de la ventana */
+}
+
+/*Login*/
+
+.container-login{
+    height: 100vh;
+}
+
+.login-container{
+    height: 100vh;
+}
+
+.imglogo{
+    height: 80px;
+    width: 150px;
+}
+
+.background-container {
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%230099ff" fill-opacity="1" d="M0,224L80,202.7C160,181,320,139,480,144C640,149,800,203,960,192C1120,181,1280,107,1360,69.3L1440,32L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path></svg>');
+    background-size: cover;
+    background-position: bottom;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilos para el contenedor de login */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.login-box {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+}
+
+.login-box .logo span {
+    display: inline-block;
+    background-color: #0099ff;
+    color: white;
+    border-radius: 50%;
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+p {
+    margin-bottom: 1.5rem;
+    color: #666;
+}
+
+.input-group {
+    margin-bottom: 1rem;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #0099ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+
+.login-btn:hover {
+    background-color: #007acc;
+}
+
+.links {
+    display: flex;
+    justify-content: space-between;
+}
+
+.links a {
+    color: #0099ff;
+    text-decoration: none;
+}
+
+.links a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,56 @@
+{# Herencia de template base para navbar y footer #}
+{% extends 'layouts/base.html' %}
+
+{# Carga de static para este template #}
+{% load static %}
+{# Hoja de estilos para este template #}
+{% block style %}
+  <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+{% endblock %}
+
+<!-- Contenido -->
+{% block content %}
+  <h1>Sistema Smart OdorWatch</h1>
+
+  <div class="card">
+    <div class="card-header">Selecciones</div>
+    <div class="card-body">
+      <h5 class="card-title">Accede directamente a los modulos que deseas visualizar</h5>
+      <a href="{% url 'snifa' %}" class="btn link-home">
+        <div class="card card-home" style="width: 18rem;">
+          <img src="https://snifa.sma.gob.cl/images/snifa-logo.png" class="card-img-top" alt="..." />
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="container container-hamster">
+    <h2>Pronto se añadirán nuevos modulos</h2>
+    <p>Estamos trabajando en ello...</p>
+
+    <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
+      <div class="wheel"></div>
+      <div class="hamster">
+        <div class="hamster__body">
+          <div class="hamster__head">
+            <div class="hamster__ear"></div>
+            <div class="hamster__eye"></div>
+            <div class="hamster__nose"></div>
+          </div>
+          <div class="hamster__limb hamster__limb--fr"></div>
+          <div class="hamster__limb hamster__limb--fl"></div>
+          <div class="hamster__limb hamster__limb--br"></div>
+          <div class="hamster__limb hamster__limb--bl"></div>
+          <div class="hamster__tail"></div>
+        </div>
+      </div>
+      <div class="spoke"></div>
+    </div>
+  </div>
+{% endblock %}
+
+<!-- SCRIPTS -->
+{% block scripts %}
+  <script src="{% static 'js/home.js' %}"></script>
+  <script src="https://kit.fontawesome.com/97e73bf1af.js" crossorigin="anonymous"></script>
+{% endblock %}

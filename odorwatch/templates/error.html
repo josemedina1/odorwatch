@@ -1,0 +1,19 @@
+{# Herencia de template base pata navbar y gooter #}
+{% extends './layouts/base.html' %}
+
+{# Carga de static para este template #}
+{% load static %}
+{# Hoja de estilos para este template #}
+{% block style %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+{% endblock %}
+
+{% block content %}
+  <h1>Error</h1>
+  <p>Se ha producido un error en la aplicación. Por favor, inténtelo de nuevo más tarde.</p>
+  <p>Mensaje de error: {{ error_message }}</p>
+{% endblock %}
+
+{% block scripts %}
+  <script src="{% static 'js/index.js' %}"></script>
+{% endblock %}

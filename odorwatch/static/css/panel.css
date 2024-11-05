@@ -1,0 +1,12 @@
+.scrollable-container {
+    max-height: 5vh;        /* Altura máxima del contenedor */
+    overflow-y: auto;       /* Desplazamiento vertical */
+    padding: 5px;           /* Espacio interior opcional */
+    border: 1px solid #ccc; /* Borde para visualizar el contenedor */
+    background-color: #f9f9f9; /* Color de fondo opcional */
+}
+
+.outputlogs{
+    background-color: rgb(33, 31, 31);
+    color: #ccc;
+}

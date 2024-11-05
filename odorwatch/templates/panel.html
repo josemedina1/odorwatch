@@ -1,0 +1,104 @@
+{# Herencia de template base para navbar y footer #}
+{% extends 'layouts/base.html' %}
+
+{# Carga de static para este template #}
+{% load static %}
+{# Hoja de estilos para este template #}
+{% block style %}
+  <link rel="stylesheet" href="{% static 'css/panel.css' %}" />
+{% endblock %}
+
+<!-- Contenido -->
+{% block content %}
+  <h1>Administración Scraping</h1>
+
+  <!-- Botón para ejecutar el script -->
+
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Iniciar Scraping</button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Ejecución manual</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">¿Quieres iniciar el scraping?</div>
+        <div class="modal-footer">
+          <button id="runScriptBtn" type="button" class="btn btn-primary" data-bs-dismiss="modal">Iniciar</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h4>Logs de ejecución</h4>
+    <!-- Div donde se mostrará el contenido de logs_scraping.txt -->
+    <div id="log-output" class="outputlogs" style="white-space: pre-wrap; border: 1px solid black; padding: 10px; height: 300px; overflow-y: scroll;">Cargando logs...</div>
+  </div>
+
+
+{% endblock %}
+
+<!-- SCRIPTS -->
+{% block scripts %}
+  <!-- Ejecutar archivo main.py desde boton -->
+  <script>
+    document.getElementById('runScriptBtn').addEventListener('click', function () {
+      // Hacer la solicitud AJAX
+      fetch("{% url 'run_script' %}")
+        .then((response) => response.json())
+        .then((data) => {
+          // Mostrar la salida del script en el elemento <pre>
+          if (data.output) {
+            //document.getElementById('scriptOutput').textContent = data.output;
+            console.log('Ejecutado correctamente, logs en logs_scraping.txt')
+          } else if (data.error) {
+            //document.getElementById('scriptOutput').textContent = data.error;
+            console.log('ERROR: ', data.error)
+          }
+        })
+        .catch((error) => console.error('Error al ejecutar el script:', error))
+    })
+  </script>
+  <!-- Lectura y prints de logs en pantalla del html -->
+  <script>
+    function fetchLogs() {
+      // Realiza una solicitud al backend para obtener los logs
+      fetch('/get-logs/')
+        .then((response) => response.json())
+        .then((data) => {
+          const logOutput = document.getElementById('log-output')
+          const isScrolledToBottom = logOutput.scrollHeight - logOutput.clientHeight <= logOutput.scrollTop + 1
+          if (data.logs) {
+            // Limpia el contenido del div antes de añadir los logs
+            logOutput.textContent = ''
+            // Añade las últimas 100 líneas del log al div
+            const last100Logs = data.logs.slice(-100)
+            last100Logs.forEach((log) => {
+              logOutput.textContent += log + '\n'
+            })
+            // Si el usuario estaba al final, mantenerlo al final
+            if (isScrolledToBottom) {
+              logOutput.scrollTop = logOutput.scrollHeight
+            }
+          } else if (data.error) {
+            logOutput.textContent = 'Error: ' + data.error
+          }
+        })
+        .catch((error) => {
+          document.getElementById('log-output').textContent = 'Error al obtener los logs: ' + error
+        })
+    }
+    // Llama a la función fetchLogs para obtener los logs al cargar la página
+    fetchLogs()
+    // Si deseas actualizar los logs periódicamente cada 5 segundos:
+    setInterval(fetchLogs, 5000) // Actualiza cada 5 segundos
+  </script>
+
+  <script src="{% static 'js/panel.js' %}"></script>
+  <script src="https://kit.fontawesome.com/97e73bf1af.js" crossorigin="anonymous"></script>
+{% endblock %}
