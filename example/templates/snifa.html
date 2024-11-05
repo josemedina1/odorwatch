@@ -1,0 +1,51 @@
+{# Herencia de template base para navbar y footer #}
+{% extends 'layouts/base.html' %}
+
+{# Carga de static para este template #}
+{% load static %}
+{# Hoja de estilos para este template #}
+{% block style %}
+  <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+{% endblock %}
+
+<!-- Contenido -->
+{% block content %}
+<h1>Modulo SNIFA</h1>
+
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Cliente</th>
+        <th scope="col">Unidad Fiscalizable</th>
+        <th scope="col">Documento</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td colspan="2">Larry the Bird</td>
+        <td>@twitter</td>
+      </tr>
+    </tbody>
+  </table>
+
+{% endblock %}
+
+<!-- SCRIPTS -->
+{% block scripts %}
+  <script src="{% static 'js/home.js' %}"></script>
+  <script src="https://kit.fontawesome.com/97e73bf1af.js" crossorigin="anonymous"></script>
+{% endblock %}
